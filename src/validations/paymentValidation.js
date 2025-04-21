@@ -18,11 +18,12 @@ const paymentSchema = yup.object().shape({
     .number()
     .typeError("paymentAmount must be a number")
     .test(
-      "is-two-decimals",
-      "Payment amount must have at most two decimal places",
+      "is-exact-two-decimals",
+      "Payment amount must have exactly two decimal places",
       (value) => {
         if (!Number.isFinite(value)) return false;
-        return /^\d+(\.\d{1,2})?$/.test(value.toString());
+        const stringValue = value.toString();
+        return /^\d+\.\d{2}$/.test(stringValue);
       }
     )
     .required("paymentAmount is required"),

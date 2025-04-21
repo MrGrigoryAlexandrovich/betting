@@ -1,5 +1,5 @@
 const yup = require("yup");
-const { validate: validateUUID, version: uuidVersion } = require("uuid");
+const { validate: validateUUID } = require("uuid");
 
 const payoutSchema = yup.object().shape({
   ticketId: yup
@@ -12,11 +12,12 @@ const payoutSchema = yup.object().shape({
     .number()
     .typeError("payoutAmount must be a number")
     .test(
-      "is-two-decimals",
-      "Payout amount must have at most two decimal places",
+      "is-exact-two-decimals",
+      "Payout amount must have exactly two decimal places",
       (value) => {
         if (!Number.isFinite(value)) return false;
-        return /^\d+(\.\d{1,2})?$/.test(value.toString());
+        const stringValue = value.toString();
+        return /^\d+\.\d{2}$/.test(stringValue);
       }
     )
     .required("payoutAmount is required"),
