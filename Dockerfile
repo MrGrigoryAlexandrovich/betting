@@ -5,6 +5,6 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 
-COPY src/index.js ./
+COPY src ./
 
 CMD ["npm", "start"]
