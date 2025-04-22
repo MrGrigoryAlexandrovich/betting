@@ -35,3 +35,12 @@ exports.payout = async (ticketId, updatedData) => {
     throw new Error(`Error: ${error.message}`);
   }
 };
+
+exports.getTickets = async () => {
+  try {
+    const tickets = await TicketModel.find();
+    return tickets;
+  } catch (error) {
+    throw new Error(`Error: ${error.message}`);
+  }
+};

@@ -58,4 +58,16 @@ router.patch("/payout", async (req, res) => {
   }
 });
 
+router.get("/list", async (req, res) => {
+  try {
+    const tickets = await ticketController.getTickets();
+    return res.status(200).json(tickets);
+  } catch (error) {
+    if (error instanceof yup.ValidationError) {
+      return res.status(400).json({ error: error.errors });
+    }
+    return res.status(400).json({ error: error.message });
+  }
+});
+
 module.exports = router;
