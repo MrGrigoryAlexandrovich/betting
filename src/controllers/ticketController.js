@@ -21,15 +21,16 @@ exports.payment = async (data) => {
 exports.payout = async (ticketId, updatedData) => {
   try {
     const ticket = await exports.findTicket(ticketId);
+
     if (!ticket) {
       throw new Error("Ticket not found");
     }
+
     if (ticket.isClosed) {
       throw new Error("Ticket is already closed.");
     }
 
     await TicketModel.updateOne({ ticketId }, { $set: updatedData });
-
     return updatedData;
   } catch (error) {
     throw new Error(`Error: ${error.message}`);

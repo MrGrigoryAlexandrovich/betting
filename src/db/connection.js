@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { setupTicketChangeStream } = require("../utils/changeStreams");
 
 const connectDB = async () => {
   try {
@@ -6,6 +7,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    setupTicketChangeStream();
     console.log("✅ Connected to MongoDB ReplicaSet");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
