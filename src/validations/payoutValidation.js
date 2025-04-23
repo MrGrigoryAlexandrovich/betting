@@ -15,9 +15,11 @@ const payoutSchema = yup.object().shape({
       "is-exact-two-decimals",
       "Payout amount must have exactly two decimal places",
       (value) => {
-        if (!Number.isFinite(value)) return false;
+        if (!Number.isFinite(value)) {
+          return false;
+        }
         const stringValue = value.toString();
-        return /^\d+\.\d{2}$/.test(stringValue);
+        return /^\d+(\.\d{1,2})?$/.test(stringValue);
       }
     )
     .required("payoutAmount is required"),

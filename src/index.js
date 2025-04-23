@@ -1,7 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./db/connection");
-require("./db/redisClient");
 const ticketRoutes = require("./routes/ticket");
 const statisticRoutes = require("./routes/statistics");
 const leaderboardRoutes = require("./routes/leaderboard");
@@ -16,7 +15,7 @@ app.use("/api/leaderboard", leaderboardRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-connectDB();
+connectDB(true);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);

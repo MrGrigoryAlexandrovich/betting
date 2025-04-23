@@ -23,7 +23,7 @@ const paymentSchema = yup.object().shape({
       (value) => {
         if (!Number.isFinite(value)) return false;
         const stringValue = value.toString();
-        return /^\d+\.\d{2}$/.test(stringValue);
+        return /^\d+(\.\d{1,2})?$/.test(stringValue);
       }
     )
     .required("paymentAmount is required"),

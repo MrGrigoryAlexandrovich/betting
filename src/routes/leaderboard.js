@@ -1,11 +1,9 @@
 const express = require("express");
-const redis = require("../db/redisConfig");
+const redis = require("../db/redisConnection");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const totalElements = await redis.zcard("leaderboard");
-    console.log(`Total elements: ${totalElements}`);
     const leaderboardData = await redis.zrevrange(
       "leaderboard",
       0,
