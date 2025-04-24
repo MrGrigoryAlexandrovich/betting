@@ -53,13 +53,13 @@ async function initializeStatisticsWorker() {
         );
 
         const hour = ticketDate.getHours();
-
+        const isPaymentTriggered = ticket.createdAt === ticket.updatedAt;
         await StatisticModel.findOneAndUpdate(
           { date: dateOnly, hour, playerUsername: ticket.playerUsername },
           {
             $inc: {
-              ticketCount: ticket.isClosed ? 0 : 1,
-              totalPaymentAmount: ticket.isClosed ? 0 : ticket.paymentAmount,
+              ticketCount: isPaymentTriggered ? 0 : 1,
+              totalPaymentAmount: isPaymentTriggered ? 0 : ticket.paymentAmount,
               totalPayoutAmount: ticket.payoutAmount || 0,
             },
           },
