@@ -58,8 +58,8 @@ async function initializeStatisticsWorker() {
           { date: dateOnly, hour, playerUsername: ticket.playerUsername },
           {
             $inc: {
-              ticketCount: isPaymentTriggered ? 0 : 1,
-              totalPaymentAmount: isPaymentTriggered ? 0 : ticket.paymentAmount,
+              ticketCount: isPaymentTriggered ? 1 : 0,
+              totalPaymentAmount: isPaymentTriggered ? ticket.paymentAmount : 0,
               totalPayoutAmount: ticket.payoutAmount || 0,
             },
           },
