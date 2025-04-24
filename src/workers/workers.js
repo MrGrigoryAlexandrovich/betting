@@ -59,7 +59,7 @@ async function initializeStatisticsWorker() {
           {
             $inc: {
               ticketCount: ticket.isClosed ? 0 : 1,
-              totalPaymentAmount: 0,
+              totalPaymentAmount: ticket.isClosed ? 0 : ticket.paymentAmount,
               totalPayoutAmount: ticket.payoutAmount || 0,
             },
           },
