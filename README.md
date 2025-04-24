@@ -17,6 +17,8 @@ The application exposes a RESTful API with the base prefix `/api/`.
 
 The following endpoints are available:
 
+### Swagger - `/api-docs`
+
 ### Tickets (`/api/tickets`)
 
 - **`GET /list`**: Retrieves a list of tickets.
