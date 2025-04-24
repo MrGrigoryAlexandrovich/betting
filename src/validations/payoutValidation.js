@@ -23,6 +23,7 @@ const payoutSchema = yup.object().shape({
       }
     )
     .required("payoutAmount is required"),
+  isClosed: yup.boolean().required("isClosed: Field is required"),
 });
 
 module.exports = { payoutSchema };

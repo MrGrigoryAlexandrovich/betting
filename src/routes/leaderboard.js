@@ -2,6 +2,44 @@ const express = require("express");
 const redis = require("../db/redisConnection");
 const router = express.Router();
 
+/**
+ * @openapi
+ * /api/leaderboard:
+ *   get:
+ *     tags:
+ *       - Leaderboard
+ *     summary: Get Leaderboard (TOP 100)
+ *     description: Fetch top 100 Leaderboard
+ *     responses:
+ *       200:
+ *         description: Leaderboard list
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   playerUsername:
+ *                     type: string
+ *                   score:
+ *                     type: number
+ *                     format: float
+ *       500:
+ *         description: Internal server error, unable to retrieve tickets
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "An error occurred while fetching the tickets."
+ */
+
 router.get("/", async (req, res) => {
   try {
     const leaderboardData = await redis.zrevrange(
