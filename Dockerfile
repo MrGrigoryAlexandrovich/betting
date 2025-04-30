@@ -7,4 +7,4 @@ RUN npm install
 
 COPY src ./
 
-CMD ["sh", "-c", "npm start & node ./workers/workers.js"]
+CMD ["npm", "start"]

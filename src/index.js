@@ -6,6 +6,7 @@ const statisticRoutes = require("./routes/statistics");
 const leaderboardRoutes = require("./routes/leaderboard");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+require("./workers/workers");
 
 dotenv.config();
 
