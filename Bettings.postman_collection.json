@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "7a865659-74df-40fb-9634-be188feeadc2",
+		"name": "Bettings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11652789",
+		"_collection_link": "https://galactic-equinox-483646.postman.co/workspace/Team-Workspace~e4259503-a491-4b0f-813b-01dda7112bb4/collection/11652789-7a865659-74df-40fb-9634-be188feeadc2?action=share&source=collection_link&creator=11652789"
+	},
+	"item": [
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Get Tickets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tickets/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tickets",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"ticketId\":\"7b862353-f1c5-4167-b24a-e23a041e3ea4\",\r\n\"playerUsername\":\"7b862353-f1c5-4167-b24a-e23a041e3ea2\",\r\n\"paymentAmount\" : 900.136\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tickets/payment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tickets",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payout",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"payoutAmount\": 11000.32,\r\n\"ticketId\": \"7b862353-f1c5-4167-b24a-e23a041e3ea4\",\r\n\"isClosed\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tickets/payout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tickets",
+								"payout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "Get statistics - Without pagination and filters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/statistics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics - Pagination",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/statistics?page=1&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics - Pagination + username",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/statistics?page=1&size=10&playerUsername=7b862353-f1c5-4167-b24a-e23a02222210",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "playerUsername",
+									"value": "7b862353-f1c5-4167-b24a-e23a02222210"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics - Pagination + date + hour +timezoneOffset",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/statistics?page=1&size=10&date=23-04-2025&hour=11&timezoneOffset=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "date",
+									"value": "23-04-2025"
+								},
+								{
+									"key": "hour",
+									"value": "11"
+								},
+								{
+									"key": "timezoneOffset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics - Pagination  + All filters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/statistics?page=1&size=10&playerUsername=81d0f3e7-81dd-4c96-be73-d4d7015e17c7&date=23-04-2025&hour=10&timezoneOffset=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "playerUsername",
+									"value": "81d0f3e7-81dd-4c96-be73-d4d7015e17c7"
+								},
+								{
+									"key": "date",
+									"value": "23-04-2025"
+								},
+								{
+									"key": "hour",
+									"value": "10"
+								},
+								{
+									"key": "timezoneOffset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LeaderboardBoard",
+			"item": [
+				{
+					"name": "Get Leaderboards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/leaderboard",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"leaderboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9000/api",
+			"type": "string"
+		}
+	]
+}
